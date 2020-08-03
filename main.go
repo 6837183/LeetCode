@@ -3,7 +3,9 @@ package main  //包声明 模块化 module
 // node + go  服务器有关 
 // require('fs') fileSystem
 import (
-	"fmt" // 向命令行输出hello world  format
+	"fmt" 
+	"math"
+	// 向命令行输出hello world  format
 )// es6 
 // node 脚本语言 
 // go   c 二进制文件 
@@ -23,7 +25,7 @@ func minEatingSpeed(piles []int, H int) int {
 		}else{
 			low++
 		}
-		low++
+	
 	}
 	// 是否可以吃完 1.. max low  
 	return low
@@ -34,7 +36,14 @@ func canEatAllBanas(piles []int,H int,k int)bool  {
 	// 1. range piles piles[i]/k向上取整数 Math.ceil
 	// 2. 加起来
 	// 3. 是否小于等于H
-	return true
+	sumTime := 0.0
+	for i := 0; i < len(piles); i++ {
+		sumTime = math.Ceil(float64(piles[i])/float64(k)) + sumTime
+	}
+	if sumTime <= float64(H) {
+		return true
+	}
+	return false
 	
 }
 func maxPiles(piles []int) int {
